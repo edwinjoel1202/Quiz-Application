@@ -3,11 +3,12 @@ import java.util.Scanner;
 
 public class QuestionService {
 	Question[] questions;
+	public int count;
 	
 	public void getQuestions() {
 		Scanner sc = new Scanner(System.in);
 		System.out.print("Enter no. of. questions you are going to enter : ");
-		int count = sc.nextInt();
+		count = sc.nextInt();
 		sc.nextLine();
 		questions = new Question[count];
 		
@@ -29,11 +30,9 @@ public class QuestionService {
 			String answer = sc.nextLine();
 			questions[i].setAnswer(answer);				
 		}
-		sc.close();
-		
 	}
 	
-	public void displayQuestions(int i) {
+	public String displayQuestionGetAnswer(int i) {
 			int id = questions[i].getId();
 			String question = questions[i].getQuestion();
 			String[] options = questions[i].getOptions();
@@ -43,6 +42,9 @@ public class QuestionService {
 			System.out.println("Options :");
 			for(int j = 0; j < options.length; j++) {
 				System.out.println((j+1) +". " + options[j]);
-			}	
+			}
+			
+			String answer = questions[i].getAnswer();
+			return answer;
 	}
 }
